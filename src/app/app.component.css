@@ -1,0 +1,17 @@
+.header {
+    padding: 0.2%;
+    color: white;
+    text-align: center;
+}
+
+.content {
+    width: 100vw;
+    height: 98vh;
+}
+
+.body {
+    margin: -8px;
+    height: 100vh;
+    background-color: #757575;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
