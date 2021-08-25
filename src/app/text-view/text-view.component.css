@@ -1,0 +1,42 @@
+.sidebar {
+    float: right;
+    width: 26.6%;
+    height: 100%;
+    margin-top: 0.5%;
+    margin-right: 0%;
+    margin-left: 0.5%;
+    background-color: white;
+    display: table;
+}
+
+.sidebar .header {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-bottom: solid #757575;
+}
+
+.sidebar .footer {
+    width: 100%;
+    border: solid 5px #757575; 
+    bottom: 0%;
+    height: 2%;
+    display: table-row;
+}
+
+.sidebar .footer input {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box; 
+    border: none;
+    border-top: solid 5px #757575;
+}
+
+.sidebar text {
+    height: auto;
+}
