@@ -1,3 +1,3 @@
-<div class="plot">
-    <app-node></app-node>
+<div class="plot" cdkDrop>
+        <app-node *ngFor="let node of nodeData" [nodeData]="node" (createNewNode)="createNewNode()"></app-node>
 </div>
