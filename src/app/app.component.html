@@ -1,11 +1,6 @@
 <div class="body">
-    <!-- <div class="header">
-        TOPOLOGY GENERATOR
-    </div>
-     -->
     <div class="content">
-        <app-visual-view></app-visual-view>
+        <app-visual-view [nodeData]="nodeDataList" (appendNode)="appendNode($event)"></app-visual-view>
         <app-text-view></app-text-view>
-        <app-node [isCreator]="true"></app-node>
     </div>
 </div>
