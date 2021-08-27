@@ -1,0 +1,9 @@
+.creator {
+    position: fixed;
+    right: 5%;
+    margin-top: 2%;
+}
+
+div {
+    cursor: move;
+}
