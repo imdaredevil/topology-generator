@@ -8,19 +8,21 @@ import { VisualViewComponent } from './visual-view/visual-view.component';
 import { NodeComponent } from './node/node.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextViewComponent,
     VisualViewComponent,
-    NodeComponent
+    NodeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

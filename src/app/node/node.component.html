@@ -1,4 +1,10 @@
-<div [ngClass]="{ 'creator': isCreator }" cdkDrag cdkDragBoundary=".plot" [cdkDragDisabled]="isCreator">
+<div    cdkDrag
+        [style.left]="(nodeData.x + 'px')" 
+        [style.top]="(nodeData.y + 'px')"
+        (cdkDragMoved)="updatePosition($event)"
+        (cdkDragStarted)="updateCreator($event)"
+        [matTooltip]="nodeData.name"
+        matTooltipPosition="right">
 <svg width="30" height="30">
     <circle cx="14" cy="14" r="13" stroke-width="2" stroke="#757575" fill="#e5e5e5"/>
 </svg>
