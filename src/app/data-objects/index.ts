@@ -1,2 +1,3 @@
 import { Node } from './node'
-export { Node };
+import { Edge } from './edge';
+export { Node, Edge };

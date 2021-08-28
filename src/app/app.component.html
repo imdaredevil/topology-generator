@@ -1,6 +1,10 @@
 <div class="body">
     <div class="content">
-        <app-visual-view [nodeData]="nodeDataList" (appendNode)="appendNode($event)"></app-visual-view>
+        <app-visual-view [nodeData]="nodeDataList" 
+        [edgeData]="edgeDataList"
+        (appendNode)="appendNode($event)"
+        (createLink)="createLink($event)"
+        (changeNodeDataList)="changeNodeDataList($event)"></app-visual-view>
         <app-text-view></app-text-view>
     </div>
 </div>

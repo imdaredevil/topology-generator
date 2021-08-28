@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Node } from './data-objects';
+import { Node, Edge } from './data-objects';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent {
     y: 10,
     isCreator: true,
   }];
+  edgeDataList: Edge [] = [];
 
   appendNode(newNode: Node): void {
       this.nodeDataList.push({
@@ -22,6 +23,19 @@ export class AppComponent {
           y: 10,
           isCreator: true,
       });
+  }
+  createLink(nodes: number[]): void {
+    nodes = nodes.sort();
+    let exists = this.edgeDataList.find((e : Edge) => e.source == nodes[0] && e.destination == nodes[1]);
+    if(!exists) {
+      this.edgeDataList.push({
+        source: nodes[0],
+        destination: nodes[1]
+      });
+    }
+  }
+  changeNodeDataList(nodeDataList: Node[]): void {
+    this.nodeDataList = nodeDataList;
   }
   
 }

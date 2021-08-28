@@ -9,6 +9,7 @@ import { NodeComponent } from './node/node.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { EdgeComponent } from './edge/edge.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TextViewComponent,
     VisualViewComponent,
     NodeComponent,
+    EdgeComponent,
   ],
   imports: [
     BrowserModule,

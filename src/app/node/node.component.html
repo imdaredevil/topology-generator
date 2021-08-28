@@ -4,8 +4,10 @@
         (cdkDragMoved)="updatePosition($event)"
         (cdkDragStarted)="updateCreator($event)"
         [matTooltip]="nodeData.name"
+        (click)="click()"
         matTooltipPosition="right">
 <svg width="30" height="30">
-    <circle cx="14" cy="14" r="13" stroke-width="2" stroke="#757575" fill="#e5e5e5"/>
+    <circle cx="14" cy="14" r="13" stroke-width="2" stroke="#353535" fill="#757575" *ngIf="currentLinkNode == nodeNumber"/>
+    <circle cx="14" cy="14" r="13" stroke-width="2" stroke="#757575" fill="#e5e5e5" *ngIf="currentLinkNode != nodeNumber"/>
 </svg>
 </div>

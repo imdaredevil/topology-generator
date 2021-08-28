@@ -1,3 +1,14 @@
 <div class="plot" cdkDrop>
-        <app-node *ngFor="let node of nodeData" [nodeData]="node" (createNewNode)="createNewNode()"></app-node>
+        <app-edge *ngFor="let edge of edgeData; let i = index"
+        [edgeData]="edge"
+        [nodeData]="nodeData">
+        </app-edge>
+        <app-node *ngFor="let node of nodeData; let i = index" 
+                [nodeData]="node"
+                [nodeNumber]="i" 
+                (createNewNode)="createNewNode()"
+                [(currentLinkNode)]="currentLinkNode"
+                (linkNode)="linkNode($event)"
+                (changeNodeData)="changeNodeData($event,i)">
+        </app-node>
 </div>
