@@ -1,4 +1,6 @@
-<div class="plot" cdkDrop>
+<div class="plot">
+<div class="inner-plot" cdkDrop>
+        <app-node-creator></app-node-creator>
         <app-edge *ngFor="let edge of edgeData; let i = index"
         [edgeData]="edge"
         [nodeData]="nodeData">
@@ -11,4 +13,5 @@
                 (linkNode)="linkNode($event)"
                 (changeNodeData)="changeNodeData($event,i)">
         </app-node>
+</div>
 </div>

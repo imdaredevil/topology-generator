@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'topology-generator';
   nodeDataList: Node[] = [{
     name: 'drag to create nodes',
-    x: window.innerWidth*0.65,
+    x: window.innerWidth*0.7*0.95,
     y: 10,
     isCreator: true,
   }];

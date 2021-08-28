@@ -1,10 +1,13 @@
 .plot {
     height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    overflow-x: scroll;
+    width: 70vw;
     position: absolute;
+    overflow: auto;
     top: 0;
-    left: 30%;
+    left: 30vw;
     background-color: white;
+}
+.inner-plot {
+    height: 150vh;
+    width: calc(100vw * 0.7 * 2)
 }

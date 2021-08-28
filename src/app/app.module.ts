@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EdgeComponent } from './edge/edge.component';
+import { NodeCreatorComponent } from './node-creator/node-creator.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EdgeComponent } from './edge/edge.component';
     VisualViewComponent,
     NodeComponent,
     EdgeComponent,
+    NodeCreatorComponent,
   ],
   imports: [
     BrowserModule,

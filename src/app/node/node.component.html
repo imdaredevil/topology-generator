@@ -5,6 +5,7 @@
         (cdkDragStarted)="updateCreator($event)"
         [matTooltip]="nodeData.name"
         (click)="click()"
+        [class.creator] = "nodeData.isCreator"
         matTooltipPosition="right">
 <svg width="30" height="30">
     <circle cx="14" cy="14" r="13" stroke-width="2" stroke="#353535" fill="#757575" *ngIf="currentLinkNode == nodeNumber"/>

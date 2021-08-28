@@ -2,3 +2,6 @@ div {
     cursor: move;
     position: absolute;
 }
+.creator {
+    opacity: 0;
+}

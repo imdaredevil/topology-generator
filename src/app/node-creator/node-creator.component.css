@@ -1,0 +1,5 @@
+.creator-marker {
+    position: fixed;
+    top: 5px;
+    left: calc(100vw*(0.7*0.95 + 0.3));
+}

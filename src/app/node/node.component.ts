@@ -8,7 +8,18 @@ import { Node } from '../data-objects';
 })
 export class NodeComponent implements OnInit {
 
-  constructor() { }
+  step(): void {
+    const element = document.querySelector('.plot');
+    if(element && this.nodeData.isCreator) {
+      this.nodeData.x = window.innerWidth * 0.7 * 0.95 + element.scrollLeft;
+      this.nodeData.y = 5 + element.scrollTop;
+    }
+    window.requestAnimationFrame(() => this.step());
+  }
+
+  constructor() { 
+    window.requestAnimationFrame(() => this.step());
+  }
   isDragging: boolean = false;
   @Input() nodeData: Node = {
     name: '',
@@ -24,6 +35,7 @@ export class NodeComponent implements OnInit {
   @Output() linkNode: EventEmitter<number> = new EventEmitter();
   currentNodeData : Node = this.nodeData;
   ngOnInit(): void {
+    
   }
   updateCreator(event: CdkDragStart): void {
     if(this.nodeData.isCreator) {
@@ -46,8 +58,27 @@ export class NodeComponent implements OnInit {
 
   updatePosition(event: CdkDragMove): void {
     this.isDragging = true;
-    this.nodeData.x = this.currentNodeData.x + event.distance.x;
-    this.nodeData.y = this.currentNodeData.y + event.distance.y;
+    const newX = this.currentNodeData.x + event.distance.x;
+    const newY = this.currentNodeData.y + event.distance.y;
+    if(newX > 0 && newX < 1.4*window.innerWidth) {
+      this.nodeData.x = newX;
+    } else {
+      console.log('x restrict');
+    }
+    if(newY > 0 && newY < 1.5*window.innerHeight) {
+      this.nodeData.y = newY;
+    }
+    const element = document.querySelector('.plot');
+    if(element) {
+      let newScrollX = 0;
+      let newScrollY = 0;
+      if(newX + 40 > window.innerWidth*0.7 + element.scrollLeft || newX < element.scrollLeft) {
+        element.scrollBy(event.delta.x,0);
+      }
+      if(newY + 40 > window.innerHeight + element.scrollTop || newY < element.scrollTop) {
+        element.scrollBy(event.delta.y,0);
+      }
+    }
     event.source.element.nativeElement.style.transform = 'none';
     this.changeNodeData.emit(this.nodeData);
   }
