@@ -12,7 +12,7 @@ export class VisualViewComponent implements OnInit {
   @Output() changeNodeDataList: EventEmitter<Node[]> = new EventEmitter<Node[]>();
   @Input() edgeData: Edge [] = []; 
 
-  @Output() appendNode: EventEmitter<Node> = new EventEmitter<Node>();
+  @Output() appendNode: EventEmitter<string> = new EventEmitter<string>();
   @Output() createLink: EventEmitter<number[]> = new EventEmitter<number[]>();
 
 
@@ -20,13 +20,8 @@ export class VisualViewComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  createNewNode(): void {
-      this.appendNode.emit({
-          name: 'drag to create nodes',
-          x: window.innerWidth*0.65,
-          y: 10,
-          isCreator: true,
-      });
+  createNewNode(nodeName: string): void {
+      this.appendNode.emit(nodeName);
   }
   linkNode(nodeIndex: number): void {
       this.createLink.emit([this.currentLinkNode, nodeIndex]);

@@ -1,7 +1,9 @@
 <div class="sidebar">
     <div class="header">Topology Generator</div>
     <div class="text">
-
+        <div *ngFor="let instruction of instructions; let i = index">
+            <p>{{instruction}}</p>
+        </div>
     </div>
-    <div class="footer"><input type='text' placeholder="Enter new instruction"></div>
+    <div class="footer"><input #inputField placeholder="Enter new instruction" (keyup.enter)="onEnter(inputField.value)"></div>
     </div>

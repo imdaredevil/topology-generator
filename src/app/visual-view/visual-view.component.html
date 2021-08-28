@@ -6,7 +6,7 @@
         <app-node *ngFor="let node of nodeData; let i = index" 
                 [nodeData]="node"
                 [nodeNumber]="i" 
-                (createNewNode)="createNewNode()"
+                (createNewNode)="createNewNode($event)"
                 [(currentLinkNode)]="currentLinkNode"
                 (linkNode)="linkNode($event)"
                 (changeNodeData)="changeNodeData($event,i)">

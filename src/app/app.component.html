@@ -5,6 +5,7 @@
         (appendNode)="appendNode($event)"
         (createLink)="createLink($event)"
         (changeNodeDataList)="changeNodeDataList($event)"></app-visual-view>
-        <app-text-view></app-text-view>
+        <app-text-view [instructions]="instructions"
+        (addInstruction)="addInstruction($event)"></app-text-view>
     </div>
 </div>

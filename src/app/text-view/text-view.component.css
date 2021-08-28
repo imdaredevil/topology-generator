@@ -47,10 +47,10 @@
     border-bottom-right-radius: 5px;
 }
 
-.sidebar text {
-    height: auto;
+.sidebar .text {
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    height: 85vh;
     overflow-y: scroll;
-    padding-left: 3%;
-    padding-top: 3%;
-    padding-bottom: 3%;
 }

@@ -20,7 +20,7 @@ export class NodeComponent implements OnInit {
   @Input() nodeNumber: number = -1;
   @Input() currentLinkNode: number = -1;
   @Output() currentLinkNodeChange = new EventEmitter<number>();
-  @Output() createNewNode: EventEmitter<any> = new EventEmitter();
+  @Output() createNewNode: EventEmitter<string> = new EventEmitter<string>();
   @Output() linkNode: EventEmitter<number> = new EventEmitter();
   currentNodeData : Node = this.nodeData;
   ngOnInit(): void {
@@ -28,8 +28,8 @@ export class NodeComponent implements OnInit {
   updateCreator(event: CdkDragStart): void {
     if(this.nodeData.isCreator) {
       this.nodeData.isCreator = false;
-      this.nodeData.name = 'unnamed node ' + (this.nodeNumber + 1);
-      this.createNewNode.emit();
+      this.nodeData.name = 'node_' + (this.nodeNumber + 1);
+      this.createNewNode.emit(this.nodeData.name);
     }
     this.currentNodeData = {
       name: this.nodeData.name,
@@ -53,7 +53,9 @@ export class NodeComponent implements OnInit {
   }
 
   click(): void {
-    if(this.isDragging == true) {
+    if(this.nodeData.isCreator) {
+      return;
+    } else if(this.isDragging == true) {
       this.isDragging = false;
     } else if(this.currentLinkNode == -1) {
       this.updateCurrentLinkNode(this.nodeNumber);
