@@ -114,12 +114,15 @@ export class AppComponent {
       },
     });
     dialogRef.afterClosed().subscribe(data => {
-      const existingIndex = this.nodeDataList.findIndex((node : Node) => node.name == data);
-      if(existingIndex == -1 || existingIndex == nodeIndex) {
-        this.instructions.push('ename ' + this.nodeDataList[nodeIndex].name + ' ' + data);
-        this.nodeDataList[nodeIndex].name = data;
-      } else {
-        this.renameNode(nodeIndex, true);
+      if(data) {
+        const existingIndex = this.nodeDataList.findIndex((node : Node) => node.name == data);
+        if(existingIndex == -1) {
+          this.instructions.push('Rename ' + this.nodeDataList[nodeIndex].name + ' ' + data);
+          this.nodeDataList[nodeIndex].name = data;
+        }  
+        else if(existingIndex != nodeIndex) {
+          this.renameNode(nodeIndex, true);
+        }
       }
     });
   }
