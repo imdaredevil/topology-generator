@@ -5,5 +5,9 @@
             <p>{{instruction}}</p>
         </div>
     </div>
-    <div class="footer"><input #inputField placeholder="Enter new instruction" (keyup.enter)="onEnter(inputField.value)"></div>
+    <div class="footer">
+        <input matInput #inputField placeholder="Enter new instruction" (keyup.enter)="onEnter(inputField.value)"></div>
+        <label *ngIf="inputError">
+            {{inputError}}
+        </label>
     </div>

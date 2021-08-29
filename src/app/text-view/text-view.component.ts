@@ -11,6 +11,7 @@ export class TextViewComponent implements OnInit {
   @Input() instructions: string[] = [];
   @Output() addInstruction: EventEmitter<string> = new EventEmitter<string>(); 
   @ViewChild('inputField') instructionInput: ElementRef = new ElementRef('');
+  @Input() inputError: string | null = null;
   ngOnInit(): void {
   }
   onEnter(newInstruction: string): void {

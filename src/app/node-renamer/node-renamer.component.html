@@ -1,0 +1,16 @@
+<h3 mat-dialog-title>Rename Node</h3>
+<mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter new name</mat-label>
+      <input matInput [(ngModel)]="data.name">
+      <mat-hint *ngIf="data.name.includes(' ')">
+        <p style="color: red">Spaces not allowed</p>
+      </mat-hint>
+      <mat-hint *ngIf="!data.name.includes(' ') && data.error">
+        <p style="color: red">Given node name already present</p>
+      </mat-hint>
+    </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [disabled]="data.name.includes(' ')" [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  </div>

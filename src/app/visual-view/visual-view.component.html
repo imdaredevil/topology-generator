@@ -11,6 +11,7 @@
                 (createNewNode)="createNewNode($event)"
                 [(currentLinkNode)]="currentLinkNode"
                 (linkNode)="linkNode($event)"
+                (renameNode)="renameNode.emit($event)"
                 (changeNodeData)="changeNodeData($event,i)">
         </app-node>
 </div>

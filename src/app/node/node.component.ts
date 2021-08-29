@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
-import { CdkDragMove, CdkDragStart, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { CdkDragMove, CdkDragStart } from '@angular/cdk/drag-drop';
 import { Node } from '../data-objects';
+
 @Component({
   selector: 'app-node',
   templateUrl: './node.component.html',
@@ -31,17 +32,18 @@ export class NodeComponent implements OnInit {
   @Input() nodeNumber: number = -1;
   @Input() currentLinkNode: number = -1;
   @Output() currentLinkNodeChange = new EventEmitter<number>();
-  @Output() createNewNode: EventEmitter<string> = new EventEmitter<string>();
+  @Output() createNewNode: EventEmitter<number> = new EventEmitter<number>();
   @Output() linkNode: EventEmitter<number> = new EventEmitter();
+  @Output() renameNode: EventEmitter<number> = new EventEmitter();
   currentNodeData : Node = this.nodeData;
   ngOnInit(): void {
     
   }
   updateCreator(event: CdkDragStart): void {
     if(this.nodeData.isCreator) {
-      this.nodeData.isCreator = false;
-      this.nodeData.name = 'node_' + (this.nodeNumber + 1);
-      this.createNewNode.emit(this.nodeData.name);
+      // this.nodeData.isCreator = false;
+      // this.nodeData.name = 'node_' + (this.nodeNumber + 1);
+      this.createNewNode.emit(this.nodeNumber);
     }
     this.currentNodeData = {
       name: this.nodeData.name,
@@ -96,6 +98,13 @@ export class NodeComponent implements OnInit {
       }
       this.updateCurrentLinkNode(-1);     
     }
+  }
+
+  openRenameBox(): boolean {
+    if (!this.nodeData.isCreator) {
+      this.renameNode.emit(this.nodeNumber);
+    } 
+   return false;
   }
   
 }

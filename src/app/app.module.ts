@@ -9,8 +9,15 @@ import { NodeComponent } from './node/node.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { EdgeComponent } from './edge/edge.component';
 import { NodeCreatorComponent } from './node-creator/node-creator.component';
+import { NodeRenamerComponent } from './node-renamer/node-renamer.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCommonModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,13 +27,21 @@ import { NodeCreatorComponent } from './node-creator/node-creator.component';
     NodeComponent,
     EdgeComponent,
     NodeCreatorComponent,
+    NodeRenamerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCommonModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

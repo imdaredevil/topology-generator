@@ -4,8 +4,10 @@
         [edgeData]="edgeDataList"
         (appendNode)="appendNode($event)"
         (createLink)="createLink($event)"
+        (renameNode)="renameNode($event)"
         (changeNodeDataList)="changeNodeDataList($event)"></app-visual-view>
         <app-text-view [instructions]="instructions"
+        [inputError]="inputError"
         (addInstruction)="addInstruction($event)"></app-text-view>
     </div>
 </div>

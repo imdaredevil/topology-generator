@@ -25,15 +25,17 @@
     border: solid 5px #757575; 
     bottom: 0%;
     height: 3%;
+    padding-left: 1%;
     display: table-row;
     border-style: 5px;
+    background-color: #c5c5c5;
 }
 
 .sidebar .footer input {
     width: 100%;
     margin: 0;
     padding: 1%;
-    padding-left: 3%;
+    padding-left: 2%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
@@ -51,6 +53,6 @@
     padding-left: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
-    height: 81vh;
+    height: 78vh;
     overflow-y: scroll;
 }
