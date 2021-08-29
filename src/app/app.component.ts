@@ -81,10 +81,17 @@ export class AppComponent {
     } else if(words[0] === 'Node' && words.length == 2) {
       let existing = this.nodeDataList.findIndex((node: Node) => node.name == words[1]);
       if(existing == -1) { 
+      const element = document.querySelector('.plot');
+      let newX = 0.2 * window.innerWidth;
+      let newY = 0.2 * window.innerHeight;
+      if(element) {
+        newX += element.scrollLeft;
+        newY += element.scrollTop;
+      } 
       this.nodeDataList.push({
         name: words[1],
-        x: 10,
-        y: 5,
+        x: newX,
+        y: newY,
         isCreator: false,
       });
       isValid = true;
