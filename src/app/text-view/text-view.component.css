@@ -1,10 +1,10 @@
 .sidebar {
     position: fixed;
-    width: 26.6%;
+    width: 26vw;
     height: 95vh;
-    margin-top: 0.5%;
+    margin-top: 2.5vh;
     margin-right: 0%;
-    margin-left: 0.5%;
+    margin-left: 2.5vh;
     background-color: #e5e5e5;
     display: table;
     border: solid 1px #757575;
@@ -47,6 +47,7 @@
     border-top: solid 5px #c5c5c5;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    outline: none;
 }
 
 .sidebar .text {
