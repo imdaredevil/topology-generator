@@ -44,8 +44,8 @@ The app can be viewed in the URL `http://localhost:5000/`
 ## How to use ?
 
 ### Graphic view
- - New nodes can be created from the circle in the top right corner.
- - Two nodes can be selected by clicking them one after the other
+ - New nodes can be created by dragging from the circle in the top right corner.
+ - Two nodes can be linked by clicking them one after the other
  - The nodes can be dragged anywhere
  - A node can be renamed by right clicking on it
 
