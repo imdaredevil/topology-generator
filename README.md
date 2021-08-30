@@ -1,27 +1,55 @@
 # TopologyGenerator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
+A topology generator built using angular and Flask. Nodes can be created either by text commands or drag and drop. Similarly, they can be linked by clicking on the nodes or by text commands. Nodes can also be renamed to custom names.  
 
-## Development server
+## Docker Deployment
+A docker image can be built using the following commands after cloning the repository
+```bash
+cd <path-to-repository>
+docker build -t <tagname> .
+docker run -p <port>:80 <tagname>
+```
+The app can be viewed in the URL `http://localhost:<port>/`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Local setup
 
-## Code scaffolding
+Please install the following:
+- nodejs
+- npm
+- python3
+- pip
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install angular
+```bash
+ npm install -g @angular/cli 
+```
 
-## Build
+Install flask
+```bash
+python3 -m pip install flask
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Build the angular project
+```bash
+ng build  --base-href=/topology-generator/
+```
 
-## Running unit tests
+Run flask server
+```bash
+export FLASK_APP=hello
+flask run
+```
+The app can be viewed in the URL `http://localhost:5000/`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## How to use ?
 
-## Running end-to-end tests
+### Graphic view
+ - New nodes can be created from the circle in the top right corner.
+ - Two nodes can be selected by clicking them one after the other
+ - The nodes can be dragged anywhere
+ - A node can be renamed by right clicking on it
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Text view
+ - Command for creating new node is `node <nodeName>`
+ - Command for creating a link is `Link <nodeName> <nodeName>`
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
