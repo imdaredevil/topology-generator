@@ -10,6 +10,7 @@ RUN python3 -m pip install flask gunicorn
 
 WORKDIR /app
 COPY . .
+RUN npm install --save
 RUN ng build  --base-href=/topology-generator/
 ENV FLASK_APP=hello
 EXPOSE 80
