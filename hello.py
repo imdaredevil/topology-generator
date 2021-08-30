@@ -8,4 +8,4 @@ def hello_world(name):
 
 @app.route("/")
 def hello():
-    return redirect(url_for('static', filename='index.html'))
+    return redirect(url_for('static', filename='index.html'))       
