@@ -44,12 +44,24 @@ The app can be viewed in the URL `http://localhost:5000/`
 ## How to use ?
 
 ### Graphic view
- - New nodes can be created from the circle in the top right corner.
- - Two nodes can be selected by clicking them one after the other
+ - New nodes can be created by dragging from the circle in the top right corner.
+ - Two nodes can be linked by clicking them one after the other
  - The nodes can be dragged anywhere
  - A node can be renamed by right clicking on it
 
 ### Text view
  - Command for creating new node is `node <nodeName>`
  - Command for creating a link is `Link <nodeName> <nodeName>`
+
+
+Please refer the video explaining the working of the software
+
+
+
+https://user-images.githubusercontent.com/21989232/131310003-d35fe248-0647-45d1-b174-76b774387600.mp4
+
+
+
+
+
 
