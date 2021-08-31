@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Node, Edge } from './data-objects';
 import { MatDialog } from '@angular/material/dialog';
 import { NodeRenamerComponent } from './node-renamer/node-renamer.component';
+import { Measurements, Errors } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,8 @@ export class AppComponent {
   title = 'topology-generator';
   nodeDataList: Node[] = [{
     name: 'drag to create nodes',
-    x: window.innerWidth*0.7*0.95,
-    y: 10,
+    x: Measurements.CREATOR_NODE_LEFT,
+    y: Measurements.CREATOR_NODE_TOP,
     isCreator: true,
   }];
   edgeDataList: Edge [] = [];
@@ -34,8 +35,8 @@ export class AppComponent {
       this.nodeDataList[nodeIndex] = currentNode; 
       this.nodeDataList.push({
           name: 'drag to create nodes',
-          x: window.innerWidth*0.65,
-          y: 10,
+          x: Measurements.CREATOR_NODE_LEFT,
+          y: Measurements.CREATOR_NODE_TOP,
           isCreator: true,
       });
       
@@ -71,19 +72,19 @@ export class AppComponent {
       if(src > -1 && dest > -1) {
         let created = this._createLink([src,dest]);
         if(!created) {
-          this.inputError = 'Link already present';
+          this.inputError = Errors.LINK_ALREADY_PRESENT;
         } else {
           isValid = true;
         }
       } else {
-        this.inputError = 'source or destination node not present';
+        this.inputError = Errors.MISSING_NODE;
       }
     } else if(words[0] === 'Node' && words.length == 2) {
       let existing = this.nodeDataList.findIndex((node: Node) => node.name == words[1]);
       if(existing == -1) { 
       const element = document.querySelector('.plot');
-      let newX = 0.2 * window.innerWidth;
-      let newY = 0.2 * window.innerHeight;
+      let newX = Measurements.NEW_NODE_LEFT;
+      let newY = Measurements.NEW_NODE_TOP;
       if(element) {
         newX += element.scrollLeft;
         newY += element.scrollTop;
@@ -96,10 +97,10 @@ export class AppComponent {
       });
       isValid = true;
     } else {
-      this.inputError = 'node already present with name ' + words[1];
+      this.inputError = Errors.DUPLICATE_NAME + words[1];
     }
     } else {
-      this.inputError = "The format is 'Node <nodeName>' or 'Link <nodename> <nodename>'" 
+      this.inputError = Errors.INPUT_FORMAT; 
     }
     if(isValid) {
       this.instructions.push(instruction);

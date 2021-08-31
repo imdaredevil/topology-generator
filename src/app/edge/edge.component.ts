@@ -28,11 +28,11 @@ export class EdgeComponent implements OnInit {
     let maxy = Math.max(source.y, destination.y);
     let minx = Math.min(source.x, destination.x);
     let miny = Math.min(source.y, destination.y);
-    this.width = maxx - minx + 26;
-    this.height = maxy - miny + 26;
+    this.width = maxx - minx + 2*13;
+    this.height = maxy - miny + 2*13;
     this.left = minx;
     this.top = miny;
-    this.coordinates = [[13,13],[this.width,this.height]]
+    this.coordinates = [[13,13],[this.width - 13,this.height - 13]]
     if(maxx == source.x) {
       this.coordinates[0][0] = this.width - 13;
       this.coordinates[1][0] = 13;
@@ -40,14 +40,6 @@ export class EdgeComponent implements OnInit {
     if(maxy == source.y) {
       this.coordinates[0][1] = this.height - 13;
       this.coordinates[1][1] = 13;
-    }
-    if(minx == source.x) {
-      this.coordinates[0][0] = 13;
-      this.coordinates[1][0] = this.width - 13;
-    }
-    if(miny == source.y) {
-      this.coordinates[0][1] = 13;
-      this.coordinates[1][1] = this.height - 13;
     }
     this.source = [source.x, source.y];
     this.destination = [destination.x, destination.y];

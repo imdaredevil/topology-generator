@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { CdkDragMove, CdkDragStart } from '@angular/cdk/drag-drop';
 import { Node } from '../data-objects';
+import { Measurements, Errors } from '../constants';
 
 @Component({
   selector: 'app-node',
@@ -10,10 +11,10 @@ import { Node } from '../data-objects';
 export class NodeComponent implements OnInit {
 
   step(): void {
-    const element = document.querySelector('.plot');
-    if(element && this.nodeData.isCreator) {
-      this.nodeData.x = window.innerWidth * 0.7 * 0.95 + element.scrollLeft;
-      this.nodeData.y = 5 + element.scrollTop;
+    const visualView = document.querySelector('.plot');
+    if(visualView && this.nodeData.isCreator) {
+      this.nodeData.x =  Measurements.CREATOR_NODE_LEFT + visualView.scrollLeft;
+      this.nodeData.y = Measurements.CREATOR_NODE_TOP + visualView.scrollTop;
     }
     window.requestAnimationFrame(() => this.step());
   }
@@ -24,8 +25,8 @@ export class NodeComponent implements OnInit {
   isDragging: boolean = false;
   @Input() nodeData: Node = {
     name: '',
-    x: 5,
-    y: 5,
+    x: 0,
+    y: 0,
     isCreator: false,
   }; 
   @Output() changeNodeData: EventEmitter<Node> = new EventEmitter<Node>();
@@ -35,17 +36,15 @@ export class NodeComponent implements OnInit {
   @Output() createNewNode: EventEmitter<number> = new EventEmitter<number>();
   @Output() linkNode: EventEmitter<number> = new EventEmitter();
   @Output() renameNode: EventEmitter<number> = new EventEmitter();
-  currentNodeData : Node = this.nodeData;
+  previousNodePositionData : Node = this.nodeData;
   ngOnInit(): void {
     
   }
   updateCreator(event: CdkDragStart): void {
     if(this.nodeData.isCreator) {
-      // this.nodeData.isCreator = false;
-      // this.nodeData.name = 'node_' + (this.nodeNumber + 1);
       this.createNewNode.emit(this.nodeNumber);
     }
-    this.currentNodeData = {
+    this.previousNodePositionData = {
       name: this.nodeData.name,
       x: this.nodeData.x,
       y: this.nodeData.y,
@@ -60,25 +59,23 @@ export class NodeComponent implements OnInit {
 
   updatePosition(event: CdkDragMove): void {
     this.isDragging = true;
-    const newX = this.currentNodeData.x + event.distance.x;
-    const newY = this.currentNodeData.y + event.distance.y;
-    if(newX > 0 && newX < 1.4*window.innerWidth) {
+    const newX = this.previousNodePositionData.x + event.distance.x;
+    const newY = this.previousNodePositionData.y + event.distance.y;
+    if(newX > 0 && newX < Measurements.VISUAL_VIEW_FULL_WIDTH) {
       this.nodeData.x = newX;
-    } else {
-      console.log('x restrict');
     }
-    if(newY > 0 && newY < 1.5*window.innerHeight) {
+    if(newY > 0 && newY < Measurements.VISUAL_VIEW_FULL_HEIGHT) {
       this.nodeData.y = newY;
     }
-    const element = document.querySelector('.plot');
-    if(element) {
+    const visualView = document.querySelector('.plot');
+    if(visualView) {
       let newScrollX = 0;
       let newScrollY = 0;
-      if(newX + 40 > window.innerWidth*0.7 + element.scrollLeft || newX < element.scrollLeft) {
-        element.scrollBy(event.delta.x,0);
+      if(newX + Measurements.SCROLL_THRESHOLD > window.innerWidth*0.7 + visualView.scrollLeft || newX < visualView.scrollLeft) {
+        visualView.scrollBy(event.delta.x,0);
       }
-      if(newY + 40 > window.innerHeight + element.scrollTop || newY < element.scrollTop) {
-        element.scrollBy(event.delta.y,0);
+      if(newY + Measurements.SCROLL_THRESHOLD > window.innerHeight + visualView.scrollTop || newY < visualView.scrollTop) {
+        visualView.scrollBy(event.delta.y,0);
       }
     }
     event.source.element.nativeElement.style.transform = 'none';
